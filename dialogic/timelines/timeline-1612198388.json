@@ -1,1 +1,1 @@
-{"events":[{"character":"","portrait":"","text":"Your mom."},{"emit_signal":"testimony return"}],"metadata":{"dialogic-version":"0.9","name":"press2"}}
+{"events":[{"character":"","portrait":"","text":"Your mom."},{"character":"","portrait":"","text":"This will be a new statement btw."},{"emit_signal":"testimony add \"Your mom.\""},{"emit_signal":"testimony add press \"press4\""},{"emit_signal":"testimony set press 1 \"press2_done\""},{"emit_signal":"testimony return"}],"metadata":{"dialogic-version":"0.9","name":"press2"}}
