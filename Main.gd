@@ -1,0 +1,134 @@
+extends Control
+
+onready var dialog
+var input_next: String = 'ui_right'
+var input_previous: String = 'ui_left'
+
+var index = -1
+
+var is_testimony = false
+
+var testimony_name = ""
+
+# This is the list of text statements.
+var testimony = [
+	'This is the first statement.',
+	'This is the second statement!',
+	'This is the third statement?',
+]
+
+# This is the list of timelines to open in Dialogic for the presses.
+var press_timelines = [
+	'press1',
+	'press2',
+	'press3',
+]
+
+func _ready():
+	dialog = Dialogic.start("intro")
+	add_child(dialog)
+	dialog.connect("dialogic_signal", self, "_on_dialogic_signal")
+
+func _input(event):
+	if not is_testimony:
+		return
+	if event.is_action_pressed(input_next):
+		index = (index + 1) % testimony.size()
+		dialog.update_text("[color=lime]" + testimony[index] + "[/color]")
+	elif event.is_action_pressed(input_previous):
+		if index <= 0:
+			return
+		index -= 1
+		dialog.update_text("[color=lime]" + testimony[index] + "[/color]")
+	elif event.is_action_pressed("ui_up"):
+		# Valid press index
+		if index >= 0 and index < testimony.size():
+			press(index)
+
+func press(id):
+	index = (index + 1) % testimony.size()
+	is_testimony = false
+	dialog.queue_free()
+	dialog = Dialogic.start(press_timelines[id])
+	add_child(dialog)
+	dialog.connect("dialogic_signal", self, "_on_dialogic_signal")
+
+func _on_dialogic_signal(value):
+	var params = value.split(' ', true, 2)
+	print(params)
+	if params[0] == "testimony":
+		if params.size() < 1:
+			print("Invalid 'testimony' signal length - please pass 'clear', 'name', 'add', 'set', 'start' or 'return'.")
+			return
+
+		if params[1] == "clear":
+			testimony.clear()
+			press_timelines.clear()
+			testimony_name = ""
+		elif params[1] == "name":
+			testimony_name = params[2].trim_suffix('"').trim_prefix('"')
+		elif params[1] == "add":
+			var index = testimony.size()
+			var text = params[2]
+			var split = params[2].split(' ', true, 1)
+			if split[0].is_valid_integer():
+				index = int(split[0])
+				text = split[1]
+			var statement = text.trim_suffix('"').trim_prefix('"')
+			testimony.insert(index, statement)
+		elif params[1] == "set":
+			var index = testimony.size()
+			var text = params[2]
+			var split = params[2].split(' ', true, 1)
+			if split[0].is_valid_integer():
+				index = int(split[0])
+				text = split[1]
+				var statement = text.trim_suffix('"').trim_prefix('"')
+				testimony[index] = statement
+			elif split[0] == "press":
+				split = split[1].split(' ', true, 1)
+				if split[0].is_valid_integer():
+					index = int(split[0])
+					text = split[1]
+				var timeline = text.trim_suffix('"').trim_prefix('"')
+				press_timelines[index] = timeline
+		elif params[1] == "start":
+			dialog.queue_free()
+			dialog = Dialogic.start("")
+			add_child(dialog)
+			dialog.input_next = ""
+			if testimony_name != "":
+				index = -1
+				dialog.update_text("[center][color=#FF8800]" + testimony_name + "[/color][/center]")
+			else:
+				index = 0
+				dialog.update_text("[color=lime]" + testimony[index] + "[/color]")
+		elif params[1] == "return":
+			dialog.queue_free()
+			dialog = Dialogic.start("")
+			add_child(dialog)
+			dialog.input_next = ""
+			if index <= -1:
+				index = 0
+			if index >= testimony.size():
+				index = testimony.size() - 1
+			dialog.update_text("[color=lime]" + testimony[index] + "[/color]")
+
+
+func testimony_name():
+	pass
+
+func testimony_add():
+	pass
+
+func testimony_remove():
+	pass
+
+func testimony_set():
+	pass
+
+func testimony_return():
+	pass
+
+func testimony_clear():
+	pass
