@@ -11,7 +11,7 @@ onready var image = $Evidence/Closeup/HBoxContainer/Image
 var evidence_list = []
 var current_selected = -1
 
-signal present(evi_id)
+signal present(evi_name)
 
 func _ready():
 	closeup.set_visible(false)
@@ -76,4 +76,4 @@ func set_current_evidence(index):
 
 
 func _on_PresentButton_pressed():
-	emit_signal("present", current_selected)
+	emit_signal("present", evidence_list[current_selected].name)

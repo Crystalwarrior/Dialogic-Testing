@@ -11,6 +11,8 @@ var testimony_name = ""
 var testimony = []
 # This is the list of timelines to open in Dialogic for the presses.
 var press_timelines = []
+# This is the list of timelines to open in Dialogic for presenting evidence.
+var present_timelines = []
 
 func _ready():
 	dialog = Dialogic.start("intro")
@@ -47,6 +49,18 @@ func press(id):
 	dialog.connect("dialogic_signal", self, "_on_dialogic_signal")
 
 
+func present(id, evi_name):
+	index = (index + 1) % testimony.size()
+	is_testimony = false
+	dialog.queue_free()
+	print(present_timelines)
+	dialog = Dialogic.start(present_timelines[id])
+	add_child(dialog)
+	move_child(dialog, 0)
+	dialog.connect("dialogic_signal", self, "_on_dialogic_signal")
+	var variable = DialogicUtil.get_var("evi_presented")
+	DialogicUtil.set_var_by_id(variable["file"], evi_name, dialog.glossary)
+
 func _on_dialogic_signal(value):
 	var params = value.split(' ', true, 2)
 	print(params)
@@ -57,6 +71,7 @@ func _on_dialogic_signal(value):
 		if params[1] == "clear":
 			testimony.clear()
 			press_timelines.clear()
+			present_timelines.clear()
 			testimony_name = ""
 			is_testimony = false
 		elif params[1] == "name":
@@ -79,6 +94,15 @@ func _on_dialogic_signal(value):
 				var timeline = text.trim_suffix('"').trim_prefix('"')
 				press_timelines.resize(index)
 				press_timelines.insert(index-1, timeline)
+			elif split[0] == "present":
+				split = split[1].split(' ', true, 1)
+				text = split[0]
+				if split[0].is_valid_integer():
+					index = int(split[0])
+					text = split[1]
+				var timeline = text.trim_suffix('"').trim_prefix('"')
+				present_timelines.resize(index)
+				present_timelines.insert(index-1, timeline)
 			else:
 				var statement = text.trim_suffix('"').trim_prefix('"')
 				testimony.insert(index, statement)
@@ -98,6 +122,13 @@ func _on_dialogic_signal(value):
 					text = split[1]
 				var timeline = text.trim_suffix('"').trim_prefix('"')
 				press_timelines[index] = timeline
+			elif split[0] == "press":
+				split = split[1].split(' ', true, 1)
+				if split[0].is_valid_integer():
+					index = int(split[0])
+					text = split[1]
+				var timeline = text.trim_suffix('"').trim_prefix('"')
+				present_timelines[index] = timeline
 		elif params[1] == "start":
 			if dialog:
 				dialog.queue_free()
@@ -129,14 +160,9 @@ func _on_dialogic_signal(value):
 
 func _on_Button_pressed():
 	$Evidence.visible = !$Evidence.visible
+	$Evidence/PresentButton.visible = is_testimony and present_timelines[index] != null
 
 
-func _on_Evidence_present(evi_id):
+func _on_Evidence_present(evi_name):
 	$Evidence.visible = false
-	# "Autopsy Report" presented on "Your Mom"
-	if evi_id == 2 and index == 2:
-		dialog.queue_free()
-		dialog = Dialogic.start("outro")
-		add_child(dialog)
-		move_child(dialog, 0)
-		dialog.connect("dialogic_signal", self, "_on_dialogic_signal")
+	present(index, evi_name)
