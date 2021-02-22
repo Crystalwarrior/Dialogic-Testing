@@ -9,20 +9,13 @@ var index = -1
 var testimony_name = ""
 # This is the list of text statements.
 var testimony = []
-#	'This is the first statement.',
-#	'This is the second statement!',
-#	'This is the third statement?',
-#]
 # This is the list of timelines to open in Dialogic for the presses.
 var press_timelines = []
-#	'press1',
-#	'press2',
-#	'press3',
-#]
 
 func _ready():
 	dialog = Dialogic.start("intro")
 	add_child(dialog)
+	move_child(dialog, 0)
 	dialog.connect("dialogic_signal", self, "_on_dialogic_signal")
 
 
@@ -50,6 +43,7 @@ func press(id):
 	print(press_timelines)
 	dialog = Dialogic.start(press_timelines[id])
 	add_child(dialog)
+	move_child(dialog, 0)
 	dialog.connect("dialogic_signal", self, "_on_dialogic_signal")
 
 
@@ -109,6 +103,7 @@ func _on_dialogic_signal(value):
 				dialog.queue_free()
 			dialog = Dialogic.start("")
 			add_child(dialog)
+			move_child(dialog, 0)
 			dialog.input_next = ""
 			if testimony_name != "":
 				index = -1
@@ -122,6 +117,7 @@ func _on_dialogic_signal(value):
 				dialog.queue_free()
 			dialog = Dialogic.start("")
 			add_child(dialog)
+			move_child(dialog, 0)
 			dialog.input_next = ""
 			if index <= -1:
 				index = 0
@@ -129,3 +125,18 @@ func _on_dialogic_signal(value):
 				index = testimony.size() - 1
 			dialog.update_text("[color=lime]" + testimony[index] + "[/color]")
 			is_testimony = true
+
+
+func _on_Button_pressed():
+	$Evidence.visible = !$Evidence.visible
+
+
+func _on_Evidence_present(evi_id):
+	$Evidence.visible = false
+	# "Autopsy Report" presented on "Your Mom"
+	if evi_id == 2 and index == 2:
+		dialog.queue_free()
+		dialog = Dialogic.start("outro")
+		add_child(dialog)
+		move_child(dialog, 0)
+		dialog.connect("dialogic_signal", self, "_on_dialogic_signal")

@@ -1,0 +1,181 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Evidence.gd" type="Script" id=1]
+[ext_resource path="res://evidence/badge.png" type="Texture" id=3]
+
+[node name="Evidence" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+color = Color( 0, 0, 0, 0.235294 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Evidence" type="VBoxContainer" parent="."]
+anchor_left = 0.1
+anchor_top = 0.1
+anchor_right = 0.9
+anchor_bottom = 0.9
+margin_left = -0.400002
+margin_top = 0.399998
+margin_right = -0.599976
+margin_bottom = -0.399963
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Closeup" type="PanelContainer" parent="Evidence"]
+margin_right = 819.0
+margin_bottom = 110.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Evidence/Closeup"]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 812.0
+margin_bottom = 103.0
+
+[node name="Image" type="TextureRect" parent="Evidence/Closeup/HBoxContainer"]
+margin_right = 96.0
+margin_bottom = 96.0
+rect_min_size = Vector2( 96, 96 )
+texture = ExtResource( 3 )
+expand = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Evidence/Closeup/HBoxContainer"]
+margin_left = 100.0
+margin_right = 805.0
+margin_bottom = 96.0
+size_flags_horizontal = 3
+
+[node name="PanelContainer" type="PanelContainer" parent="Evidence/Closeup/HBoxContainer/VBoxContainer"]
+margin_right = 705.0
+margin_bottom = 28.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Name" type="Label" parent="Evidence/Closeup/HBoxContainer/VBoxContainer/PanelContainer"]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 698.0
+margin_bottom = 21.0
+text = "This is Evidence"
+align = 1
+
+[node name="ColorRect" type="ColorRect" parent="Evidence/Closeup/HBoxContainer/VBoxContainer"]
+margin_top = 32.0
+margin_right = 705.0
+margin_bottom = 96.0
+size_flags_vertical = 3
+color = Color( 0.172549, 0.164706, 0.196078, 1 )
+
+[node name="Description" type="Label" parent="Evidence/Closeup/HBoxContainer/VBoxContainer/ColorRect"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 5.0
+margin_top = 5.0
+margin_right = -5.0
+margin_bottom = -5.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "This is evidence description"
+autowrap = true
+clip_text = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="List" type="PanelContainer" parent="Evidence"]
+margin_top = 114.0
+margin_right = 819.0
+margin_bottom = 479.0
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Evidence/List"]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 812.0
+margin_bottom = 358.0
+
+[node name="EviLabel" type="PanelContainer" parent="Evidence/List/VBoxContainer"]
+margin_right = 805.0
+margin_bottom = 28.0
+
+[node name="Label" type="Label" parent="Evidence/List/VBoxContainer/EviLabel"]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 798.0
+margin_bottom = 21.0
+text = "Evidence"
+align = 1
+
+[node name="Container" type="HBoxContainer" parent="Evidence/List/VBoxContainer"]
+margin_top = 32.0
+margin_right = 805.0
+margin_bottom = 333.0
+size_flags_vertical = 3
+
+[node name="Left" type="Button" parent="Evidence/List/VBoxContainer/Container"]
+margin_right = 20.0
+margin_bottom = 301.0
+rect_min_size = Vector2( 20, 0 )
+size_flags_vertical = 3
+text = "<"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ItemList" type="ItemList" parent="Evidence/List/VBoxContainer/Container"]
+margin_left = 24.0
+margin_right = 781.0
+margin_bottom = 301.0
+size_flags_horizontal = 3
+max_columns = 0
+same_column_width = true
+icon_mode = 0
+fixed_icon_size = Vector2( 96, 96 )
+
+[node name="Right" type="Button" parent="Evidence/List/VBoxContainer/Container"]
+margin_left = 785.0
+margin_right = 805.0
+margin_bottom = 301.0
+rect_min_size = Vector2( 20, 0 )
+size_flags_vertical = 3
+text = ">"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PageLabel" type="Label" parent="Evidence/List/VBoxContainer"]
+margin_top = 337.0
+margin_right = 805.0
+margin_bottom = 351.0
+text = "***"
+align = 1
+
+[node name="PresentButton" type="Button" parent="."]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -74.0
+margin_top = 6.0
+margin_right = 75.0
+margin_bottom = 55.0
+disabled = true
+text = "Present"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="item_selected" from="Evidence/List/VBoxContainer/Container/ItemList" to="." method="_on_ItemList_item_selected"]
+[connection signal="nothing_selected" from="Evidence/List/VBoxContainer/Container/ItemList" to="." method="_on_ItemList_nothing_selected"]
+[connection signal="pressed" from="PresentButton" to="." method="_on_PresentButton_pressed"]

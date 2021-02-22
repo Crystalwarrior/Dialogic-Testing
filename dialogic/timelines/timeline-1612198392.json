@@ -1,1 +1,1 @@
-{"events":[{"character":"","portrait":"","text":"Damn you questioning this...fr..."},{"options":[],"question":"End Testimony?"},{"choice":"yes"},{"change_timeline":"timeline-1612295178.json"},{"choice":"no"},{"emit_signal":"testimony return"},{"endchoice":""}],"metadata":{"dialogic-version":"0.9","name":"press4"}}
+{"events":[{"character":"","portrait":"","text":"Damn you questioning this...fr..."}],"metadata":{"dialogic-version":"0.9","name":"press4"}}
