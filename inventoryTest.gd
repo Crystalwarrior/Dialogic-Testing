@@ -7,6 +7,24 @@ func _ready():
 	$EvidenceDialog.popup_centered()
 	update_evidence(Data.evidence)
 
+func update_evidence(list: Array):
+	var length = list.size()
+	if evi_container.get_child_count() < length:
+		for i in length:
+			var evi_entry = evi_template.instance()
+			evi_entry.connect("combine", self, "_on_evidence_combine")
+			evi_entry.connect("show_popup", self, "_on_evidence_popup")
+			evi_container.add_child(evi_entry)
+	for i in evi_container.get_child_count():
+		var child = evi_container.get_child(i)
+		if i >= length:
+			child.queue_free()
+			continue
+		var evidence = list[i]
+		child.set_icon(evidence.icon)
+		child.set_name(evidence.name)
+		child.set_desc(evidence.desc)
+
 func _on_Button_pressed():
 	evi_container.visible = !evi_container.visible
 
@@ -27,19 +45,5 @@ func _on_evidence_popup(evi_name):
 			$EvidenceDialog.popup_centered()
 			break
 
-func update_evidence(list: Array):
-	var length = list.size()
-	if evi_container.get_child_count() < length:
-		for i in length:
-			var evi_entry = evi_template.instance()
-			evi_entry.connect("show_popup", self, "_on_evidence_popup")
-			evi_container.add_child(evi_entry)
-	for i in evi_container.get_child_count():
-		var child = evi_container.get_child(i)
-		if i >= length:
-			child.queue_free()
-			continue
-		var evidence = list[i]
-		child.set_icon(evidence.icon)
-		child.set_name(evidence.name)
-		child.set_desc(evidence.desc)
+func _on_evidence_combine(first, second):
+	print("Combining %s with %s" % [first, second])
