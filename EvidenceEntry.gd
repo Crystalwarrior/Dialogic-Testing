@@ -48,5 +48,5 @@ func _on_pressed():
 func _on_button_down():
 	just_dragged = get_viewport().gui_is_dragging()
 	yield(get_tree().create_timer(0.8), "timeout")
-	if not get_viewport().gui_is_dragging():
+	if not get_viewport().gui_is_dragging() and pressed:
 		emit_signal("show_popup", lbl_name.text)
