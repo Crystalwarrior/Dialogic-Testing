@@ -30,9 +30,13 @@ config/name="Dialogic Testing"
 run/main_scene="res://Main.tscn"
 config/icon="res://icon.png"
 
+[autoload]
+
+Data="*res://Data.gd"
+
 [editor_plugins]
 
-enabled=PoolStringArray( "dialogic" )
+enabled=PoolStringArray( "res://addons/dialogic/plugin.cfg" )
 
 [rendering]
 

@@ -1,3 +1,5 @@
 .import/
 *.import
 addons/dialogic/
+assets/
+dialogic/

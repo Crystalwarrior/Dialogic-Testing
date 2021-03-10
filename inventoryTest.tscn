@@ -1,15 +1,10 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://icon.png" type="Texture" id=1]
-[ext_resource path="res://inventoryTest.gd" type="Script" id=2]
-[ext_resource path="res://evidence/badge.png" type="Texture" id=3]
-[ext_resource path="res://evidence/envelope.png" type="Texture" id=4]
-[ext_resource path="res://evidence/list.png" type="Texture" id=5]
+[ext_resource path="res://inventoryTest.tres.gd" type="Script" id=2]
 [ext_resource path="res://evidence/bg.png" type="Texture" id=6]
 [ext_resource path="res://PresentBox.gd" type="Script" id=7]
-[ext_resource path="res://Evi.gd" type="Script" id=8]
 
-[node name="Control" type="Control"]
+[node name="InventoryTest" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 2 )
@@ -24,690 +19,33 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+[node name="EvidenceContainer" type="HBoxContainer" parent="VBoxContainer"]
 margin_right = 1024.0
-margin_bottom = 140.0
+margin_bottom = 128.0
+rect_min_size = Vector2( 0, 128 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Button" type="Button" parent="VBoxContainer/HBoxContainer"]
+[node name="Button" type="Button" parent="VBoxContainer/EvidenceContainer"]
 margin_right = 69.0
-margin_bottom = 140.0
+margin_bottom = 128.0
 text = "Evidence"
 
-[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer/HBoxContainer"]
+[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer/EvidenceContainer"]
 margin_left = 73.0
 margin_right = 1024.0
-margin_bottom = 140.0
+margin_bottom = 128.0
 size_flags_horizontal = 3
 scroll_vertical_enabled = false
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/ScrollContainer"]
-margin_right = 1820.0
-margin_bottom = 128.0
-
-[node name="Evi" type="PanelContainer" parent="VBoxContainer/HBoxContainer/ScrollContainer/HBoxContainer"]
-margin_right = 110.0
-margin_bottom = 128.0
-script = ExtResource( 8 )
-
-[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer/ScrollContainer/HBoxContainer/Evi"]
-margin_left = 7.0
-margin_top = 7.0
-margin_right = 103.0
-margin_bottom = 121.0
-
-[node name="bg" type="TextureRect" parent="VBoxContainer/HBoxContainer/ScrollContainer/HBoxContainer/Evi/VBoxContainer"]
-margin_right = 96.0
-margin_bottom = 96.0
-texture = ExtResource( 6 )
-
-[node name="Icon" type="TextureRect" parent="VBoxContainer/HBoxContainer/ScrollContainer/HBoxContainer/Evi/VBoxContainer/bg"]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -48.0
-margin_top = -48.0
-margin_right = 48.0
-margin_bottom = 48.0
-texture = ExtResource( 3 )
-stretch_mode = 4
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="name" type="Label" parent="VBoxContainer/HBoxContainer/ScrollContainer/HBoxContainer/Evi/VBoxContainer"]
-margin_top = 100.0
-margin_right = 96.0
-margin_bottom = 114.0
-text = "Badge"
-align = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Evi2" type="PanelContainer" parent="VBoxContainer/HBoxContainer/ScrollContainer/HBoxContainer"]
-margin_left = 114.0
-margin_right = 224.0
-margin_bottom = 128.0
-
-[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer/ScrollContainer/HBoxContainer/Evi2"]
-margin_left = 7.0
-margin_top = 7.0
-margin_right = 103.0
-margin_bottom = 121.0
-
-[node name="bg" type="TextureRect" parent="VBoxContainer/HBoxContainer/ScrollContainer/HBoxContainer/Evi2/VBoxContainer"]
-margin_right = 96.0
-margin_bottom = 96.0
-texture = ExtResource( 6 )
-
-[node name="Icon" type="TextureRect" parent="VBoxContainer/HBoxContainer/ScrollContainer/HBoxContainer/Evi2/VBoxContainer/bg"]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -48.0
-margin_top = -48.0
-margin_right = 48.0
-margin_bottom = 48.0
-texture = ExtResource( 4 )
-stretch_mode = 4
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="name" type="Label" parent="VBoxContainer/HBoxContainer/ScrollContainer/HBoxContainer/Evi2/VBoxContainer"]
-margin_top = 100.0
-margin_right = 96.0
-margin_bottom = 114.0
-text = "Autopsy"
-align = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Evi3" type="PanelContainer" parent="VBoxContainer/HBoxContainer/ScrollContainer/HBoxContainer"]
-margin_left = 228.0
-margin_right = 338.0
-margin_bottom = 128.0
-
-[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer/ScrollContainer/HBoxContainer/Evi3"]
-margin_left = 7.0
-margin_top = 7.0
-margin_right = 103.0
-margin_bottom = 121.0
-
-[node name="bg" type="TextureRect" parent="VBoxContainer/HBoxContainer/ScrollContainer/HBoxContainer/Evi3/VBoxContainer"]
-margin_right = 96.0
-margin_bottom = 96.0
-texture = ExtResource( 6 )
-
-[node name="Icon" type="TextureRect" parent="VBoxContainer/HBoxContainer/ScrollContainer/HBoxContainer/Evi3/VBoxContainer/bg"]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -48.0
-margin_top = -48.0
-margin_right = 48.0
-margin_bottom = 48.0
-texture = ExtResource( 5 )
-stretch_mode = 4
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="name" type="Label" parent="VBoxContainer/HBoxContainer/ScrollContainer/HBoxContainer/Evi3/VBoxContainer"]
-margin_top = 100.0
-margin_right = 96.0
-margin_bottom = 114.0
-text = "List"
-align = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Evi4" type="PanelContainer" parent="VBoxContainer/HBoxContainer/ScrollContainer/HBoxContainer"]
-margin_left = 342.0
-margin_right = 452.0
-margin_bottom = 128.0
-
-[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer/ScrollContainer/HBoxContainer/Evi4"]
-margin_left = 7.0
-margin_top = 7.0
-margin_right = 103.0
-margin_bottom = 121.0
-
-[node name="bg" type="TextureRect" parent="VBoxContainer/HBoxContainer/ScrollContainer/HBoxContainer/Evi4/VBoxContainer"]
-margin_right = 96.0
-margin_bottom = 96.0
-texture = ExtResource( 6 )
-
-[node name="Icon" type="TextureRect" parent="VBoxContainer/HBoxContainer/ScrollContainer/HBoxContainer/Evi4/VBoxContainer/bg"]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -48.0
-margin_top = -48.0
-margin_right = 48.0
-margin_bottom = 48.0
-texture = ExtResource( 1 )
-stretch_mode = 4
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="name" type="Label" parent="VBoxContainer/HBoxContainer/ScrollContainer/HBoxContainer/Evi4/VBoxContainer"]
-margin_top = 100.0
-margin_right = 96.0
-margin_bottom = 114.0
-text = "List"
-align = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Evi5" type="PanelContainer" parent="VBoxContainer/HBoxContainer/ScrollContainer/HBoxContainer"]
-margin_left = 456.0
-margin_right = 566.0
-margin_bottom = 128.0
-
-[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer/ScrollContainer/HBoxContainer/Evi5"]
-margin_left = 7.0
-margin_top = 7.0
-margin_right = 103.0
-margin_bottom = 121.0
-
-[node name="bg" type="TextureRect" parent="VBoxContainer/HBoxContainer/ScrollContainer/HBoxContainer/Evi5/VBoxContainer"]
-margin_right = 96.0
-margin_bottom = 96.0
-texture = ExtResource( 6 )
-
-[node name="Icon" type="TextureRect" parent="VBoxContainer/HBoxContainer/ScrollContainer/HBoxContainer/Evi5/VBoxContainer/bg"]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -48.0
-margin_top = -48.0
-margin_right = 48.0
-margin_bottom = 48.0
-texture = ExtResource( 3 )
-stretch_mode = 4
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="name" type="Label" parent="VBoxContainer/HBoxContainer/ScrollContainer/HBoxContainer/Evi5/VBoxContainer"]
-margin_top = 100.0
-margin_right = 96.0
-margin_bottom = 114.0
-text = "Badge"
-align = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Evi6" type="PanelContainer" parent="VBoxContainer/HBoxContainer/ScrollContainer/HBoxContainer"]
-margin_left = 570.0
-margin_right = 680.0
-margin_bottom = 128.0
-
-[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer/ScrollContainer/HBoxContainer/Evi6"]
-margin_left = 7.0
-margin_top = 7.0
-margin_right = 103.0
-margin_bottom = 121.0
-
-[node name="bg" type="TextureRect" parent="VBoxContainer/HBoxContainer/ScrollContainer/HBoxContainer/Evi6/VBoxContainer"]
-margin_right = 96.0
-margin_bottom = 96.0
-texture = ExtResource( 6 )
-
-[node name="Icon" type="TextureRect" parent="VBoxContainer/HBoxContainer/ScrollContainer/HBoxContainer/Evi6/VBoxContainer/bg"]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -48.0
-margin_top = -48.0
-margin_right = 48.0
-margin_bottom = 48.0
-texture = ExtResource( 4 )
-stretch_mode = 4
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="name" type="Label" parent="VBoxContainer/HBoxContainer/ScrollContainer/HBoxContainer/Evi6/VBoxContainer"]
-margin_top = 100.0
-margin_right = 96.0
-margin_bottom = 114.0
-text = "Autopsy"
-align = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Evi7" type="PanelContainer" parent="VBoxContainer/HBoxContainer/ScrollContainer/HBoxContainer"]
-margin_left = 684.0
-margin_right = 794.0
-margin_bottom = 128.0
-
-[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer/ScrollContainer/HBoxContainer/Evi7"]
-margin_left = 7.0
-margin_top = 7.0
-margin_right = 103.0
-margin_bottom = 121.0
-
-[node name="bg" type="TextureRect" parent="VBoxContainer/HBoxContainer/ScrollContainer/HBoxContainer/Evi7/VBoxContainer"]
-margin_right = 96.0
-margin_bottom = 96.0
-texture = ExtResource( 6 )
-
-[node name="Icon" type="TextureRect" parent="VBoxContainer/HBoxContainer/ScrollContainer/HBoxContainer/Evi7/VBoxContainer/bg"]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -48.0
-margin_top = -48.0
-margin_right = 48.0
-margin_bottom = 48.0
-texture = ExtResource( 5 )
-stretch_mode = 4
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="name" type="Label" parent="VBoxContainer/HBoxContainer/ScrollContainer/HBoxContainer/Evi7/VBoxContainer"]
-margin_top = 100.0
-margin_right = 96.0
-margin_bottom = 114.0
-text = "List"
-align = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Evi8" type="PanelContainer" parent="VBoxContainer/HBoxContainer/ScrollContainer/HBoxContainer"]
-margin_left = 798.0
-margin_right = 908.0
-margin_bottom = 128.0
-
-[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer/ScrollContainer/HBoxContainer/Evi8"]
-margin_left = 7.0
-margin_top = 7.0
-margin_right = 103.0
-margin_bottom = 121.0
-
-[node name="bg" type="TextureRect" parent="VBoxContainer/HBoxContainer/ScrollContainer/HBoxContainer/Evi8/VBoxContainer"]
-margin_right = 96.0
-margin_bottom = 96.0
-texture = ExtResource( 6 )
-
-[node name="Icon" type="TextureRect" parent="VBoxContainer/HBoxContainer/ScrollContainer/HBoxContainer/Evi8/VBoxContainer/bg"]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -48.0
-margin_top = -48.0
-margin_right = 48.0
-margin_bottom = 48.0
-texture = ExtResource( 1 )
-stretch_mode = 4
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="name" type="Label" parent="VBoxContainer/HBoxContainer/ScrollContainer/HBoxContainer/Evi8/VBoxContainer"]
-margin_top = 100.0
-margin_right = 96.0
-margin_bottom = 114.0
-text = "List"
-align = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Evi9" type="PanelContainer" parent="VBoxContainer/HBoxContainer/ScrollContainer/HBoxContainer"]
-margin_left = 912.0
-margin_right = 1022.0
-margin_bottom = 128.0
-
-[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer/ScrollContainer/HBoxContainer/Evi9"]
-margin_left = 7.0
-margin_top = 7.0
-margin_right = 103.0
-margin_bottom = 121.0
-
-[node name="bg" type="TextureRect" parent="VBoxContainer/HBoxContainer/ScrollContainer/HBoxContainer/Evi9/VBoxContainer"]
-margin_right = 96.0
-margin_bottom = 96.0
-texture = ExtResource( 6 )
-
-[node name="Icon" type="TextureRect" parent="VBoxContainer/HBoxContainer/ScrollContainer/HBoxContainer/Evi9/VBoxContainer/bg"]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -48.0
-margin_top = -48.0
-margin_right = 48.0
-margin_bottom = 48.0
-texture = ExtResource( 3 )
-stretch_mode = 4
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="name" type="Label" parent="VBoxContainer/HBoxContainer/ScrollContainer/HBoxContainer/Evi9/VBoxContainer"]
-margin_top = 100.0
-margin_right = 96.0
-margin_bottom = 114.0
-text = "Badge"
-align = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Evi10" type="PanelContainer" parent="VBoxContainer/HBoxContainer/ScrollContainer/HBoxContainer"]
-margin_left = 1026.0
-margin_right = 1136.0
-margin_bottom = 128.0
-
-[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer/ScrollContainer/HBoxContainer/Evi10"]
-margin_left = 7.0
-margin_top = 7.0
-margin_right = 103.0
-margin_bottom = 121.0
-
-[node name="bg" type="TextureRect" parent="VBoxContainer/HBoxContainer/ScrollContainer/HBoxContainer/Evi10/VBoxContainer"]
-margin_right = 96.0
-margin_bottom = 96.0
-texture = ExtResource( 6 )
-
-[node name="Icon" type="TextureRect" parent="VBoxContainer/HBoxContainer/ScrollContainer/HBoxContainer/Evi10/VBoxContainer/bg"]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -48.0
-margin_top = -48.0
-margin_right = 48.0
-margin_bottom = 48.0
-texture = ExtResource( 4 )
-stretch_mode = 4
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="name" type="Label" parent="VBoxContainer/HBoxContainer/ScrollContainer/HBoxContainer/Evi10/VBoxContainer"]
-margin_top = 100.0
-margin_right = 96.0
-margin_bottom = 114.0
-text = "Autopsy"
-align = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Evi11" type="PanelContainer" parent="VBoxContainer/HBoxContainer/ScrollContainer/HBoxContainer"]
-margin_left = 1140.0
-margin_right = 1250.0
-margin_bottom = 128.0
-
-[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer/ScrollContainer/HBoxContainer/Evi11"]
-margin_left = 7.0
-margin_top = 7.0
-margin_right = 103.0
-margin_bottom = 121.0
-
-[node name="bg" type="TextureRect" parent="VBoxContainer/HBoxContainer/ScrollContainer/HBoxContainer/Evi11/VBoxContainer"]
-margin_right = 96.0
-margin_bottom = 96.0
-texture = ExtResource( 6 )
-
-[node name="Icon" type="TextureRect" parent="VBoxContainer/HBoxContainer/ScrollContainer/HBoxContainer/Evi11/VBoxContainer/bg"]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -48.0
-margin_top = -48.0
-margin_right = 48.0
-margin_bottom = 48.0
-texture = ExtResource( 5 )
-stretch_mode = 4
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="name" type="Label" parent="VBoxContainer/HBoxContainer/ScrollContainer/HBoxContainer/Evi11/VBoxContainer"]
-margin_top = 100.0
-margin_right = 96.0
-margin_bottom = 114.0
-text = "List"
-align = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Evi12" type="PanelContainer" parent="VBoxContainer/HBoxContainer/ScrollContainer/HBoxContainer"]
-margin_left = 1254.0
-margin_right = 1364.0
-margin_bottom = 128.0
-
-[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer/ScrollContainer/HBoxContainer/Evi12"]
-margin_left = 7.0
-margin_top = 7.0
-margin_right = 103.0
-margin_bottom = 121.0
-
-[node name="bg" type="TextureRect" parent="VBoxContainer/HBoxContainer/ScrollContainer/HBoxContainer/Evi12/VBoxContainer"]
-margin_right = 96.0
-margin_bottom = 96.0
-texture = ExtResource( 6 )
-
-[node name="Icon" type="TextureRect" parent="VBoxContainer/HBoxContainer/ScrollContainer/HBoxContainer/Evi12/VBoxContainer/bg"]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -48.0
-margin_top = -48.0
-margin_right = 48.0
-margin_bottom = 48.0
-texture = ExtResource( 1 )
-stretch_mode = 4
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="name" type="Label" parent="VBoxContainer/HBoxContainer/ScrollContainer/HBoxContainer/Evi12/VBoxContainer"]
-margin_top = 100.0
-margin_right = 96.0
-margin_bottom = 114.0
-text = "List"
-align = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Evi13" type="PanelContainer" parent="VBoxContainer/HBoxContainer/ScrollContainer/HBoxContainer"]
-margin_left = 1368.0
-margin_right = 1478.0
-margin_bottom = 128.0
-
-[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer/ScrollContainer/HBoxContainer/Evi13"]
-margin_left = 7.0
-margin_top = 7.0
-margin_right = 103.0
-margin_bottom = 121.0
-
-[node name="bg" type="TextureRect" parent="VBoxContainer/HBoxContainer/ScrollContainer/HBoxContainer/Evi13/VBoxContainer"]
-margin_right = 96.0
-margin_bottom = 96.0
-texture = ExtResource( 6 )
-
-[node name="Icon" type="TextureRect" parent="VBoxContainer/HBoxContainer/ScrollContainer/HBoxContainer/Evi13/VBoxContainer/bg"]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -48.0
-margin_top = -48.0
-margin_right = 48.0
-margin_bottom = 48.0
-texture = ExtResource( 3 )
-stretch_mode = 4
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="name" type="Label" parent="VBoxContainer/HBoxContainer/ScrollContainer/HBoxContainer/Evi13/VBoxContainer"]
-margin_top = 100.0
-margin_right = 96.0
-margin_bottom = 114.0
-text = "Badge"
-align = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Evi14" type="PanelContainer" parent="VBoxContainer/HBoxContainer/ScrollContainer/HBoxContainer"]
-margin_left = 1482.0
-margin_right = 1592.0
-margin_bottom = 128.0
-
-[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer/ScrollContainer/HBoxContainer/Evi14"]
-margin_left = 7.0
-margin_top = 7.0
-margin_right = 103.0
-margin_bottom = 121.0
-
-[node name="bg" type="TextureRect" parent="VBoxContainer/HBoxContainer/ScrollContainer/HBoxContainer/Evi14/VBoxContainer"]
-margin_right = 96.0
-margin_bottom = 96.0
-texture = ExtResource( 6 )
-
-[node name="Icon" type="TextureRect" parent="VBoxContainer/HBoxContainer/ScrollContainer/HBoxContainer/Evi14/VBoxContainer/bg"]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -48.0
-margin_top = -48.0
-margin_right = 48.0
-margin_bottom = 48.0
-texture = ExtResource( 4 )
-stretch_mode = 4
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="name" type="Label" parent="VBoxContainer/HBoxContainer/ScrollContainer/HBoxContainer/Evi14/VBoxContainer"]
-margin_top = 100.0
-margin_right = 96.0
-margin_bottom = 114.0
-text = "Autopsy"
-align = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Evi15" type="PanelContainer" parent="VBoxContainer/HBoxContainer/ScrollContainer/HBoxContainer"]
-margin_left = 1596.0
-margin_right = 1706.0
-margin_bottom = 128.0
-
-[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer/ScrollContainer/HBoxContainer/Evi15"]
-margin_left = 7.0
-margin_top = 7.0
-margin_right = 103.0
-margin_bottom = 121.0
-
-[node name="bg" type="TextureRect" parent="VBoxContainer/HBoxContainer/ScrollContainer/HBoxContainer/Evi15/VBoxContainer"]
-margin_right = 96.0
-margin_bottom = 96.0
-texture = ExtResource( 6 )
-
-[node name="Icon" type="TextureRect" parent="VBoxContainer/HBoxContainer/ScrollContainer/HBoxContainer/Evi15/VBoxContainer/bg"]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -48.0
-margin_top = -48.0
-margin_right = 48.0
-margin_bottom = 48.0
-texture = ExtResource( 5 )
-stretch_mode = 4
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="name" type="Label" parent="VBoxContainer/HBoxContainer/ScrollContainer/HBoxContainer/Evi15/VBoxContainer"]
-margin_top = 100.0
-margin_right = 96.0
-margin_bottom = 114.0
-text = "List"
-align = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Evi16" type="PanelContainer" parent="VBoxContainer/HBoxContainer/ScrollContainer/HBoxContainer"]
-margin_left = 1710.0
-margin_right = 1820.0
-margin_bottom = 128.0
-
-[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer/ScrollContainer/HBoxContainer/Evi16"]
-margin_left = 7.0
-margin_top = 7.0
-margin_right = 103.0
-margin_bottom = 121.0
-
-[node name="bg" type="TextureRect" parent="VBoxContainer/HBoxContainer/ScrollContainer/HBoxContainer/Evi16/VBoxContainer"]
-margin_right = 96.0
-margin_bottom = 96.0
-texture = ExtResource( 6 )
-
-[node name="Icon" type="TextureRect" parent="VBoxContainer/HBoxContainer/ScrollContainer/HBoxContainer/Evi16/VBoxContainer/bg"]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -48.0
-margin_top = -48.0
-margin_right = 48.0
-margin_bottom = 48.0
-texture = ExtResource( 1 )
-stretch_mode = 4
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="name" type="Label" parent="VBoxContainer/HBoxContainer/ScrollContainer/HBoxContainer/Evi16/VBoxContainer"]
-margin_top = 100.0
-margin_right = 96.0
-margin_bottom = 114.0
-text = "List"
-align = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="Evidences" type="HBoxContainer" parent="VBoxContainer/EvidenceContainer/ScrollContainer"]
 
 [node name="PresentBox" type="ColorRect" parent="VBoxContainer"]
-margin_top = 144.0
+margin_top = 132.0
 margin_right = 1024.0
 margin_bottom = 600.0
 size_flags_vertical = 3
@@ -729,4 +67,77 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[connection signal="pressed" from="VBoxContainer/HBoxContainer/Button" to="." method="_on_Button_pressed"]
+[node name="EvidenceDialog" type="WindowDialog" parent="."]
+margin_right = 370.0
+margin_bottom = 146.0
+popup_exclusive = true
+window_title = "Evidence"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="EvidenceDialog"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 7.0
+margin_top = 7.0
+margin_right = -7.0
+margin_bottom = -25.0
+mouse_default_cursor_shape = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="EvidenceDialog/HBoxContainer"]
+margin_right = 96.0
+margin_bottom = 114.0
+
+[node name="bg" type="TextureRect" parent="EvidenceDialog/HBoxContainer/VBoxContainer"]
+margin_right = 96.0
+margin_bottom = 96.0
+texture = ExtResource( 6 )
+
+[node name="Icon" type="TextureRect" parent="EvidenceDialog/HBoxContainer/VBoxContainer/bg"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -48.0
+margin_top = -48.0
+margin_right = 48.0
+margin_bottom = 48.0
+stretch_mode = 4
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="name" type="Label" parent="EvidenceDialog/HBoxContainer/VBoxContainer"]
+margin_top = 100.0
+margin_right = 96.0
+margin_bottom = 114.0
+text = "Evidence"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="desc" type="RichTextLabel" parent="EvidenceDialog/HBoxContainer"]
+margin_left = 100.0
+margin_right = 356.0
+margin_bottom = 114.0
+size_flags_horizontal = 3
+text = "Sample Text"
+
+[node name="Button" type="Button" parent="EvidenceDialog"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -49.0
+margin_top = -23.0
+margin_right = 49.0
+margin_bottom = -3.0
+text = "Use Evidence"
+
+[connection signal="pressed" from="VBoxContainer/EvidenceContainer/Button" to="." method="_on_Button_pressed"]
+[connection signal="pressed" from="EvidenceDialog/Button" to="." method="_on_PresentButton_pressed"]
